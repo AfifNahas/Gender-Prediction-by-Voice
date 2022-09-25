@@ -25,7 +25,7 @@ SECRET_KEY = '772@cd5sz0jfxt5m^92uzlss2@08)9@9u!*s5_(ve!p2lz-rie'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['voicepredictio.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['voiceprediction.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
