@@ -1,3 +1,4 @@
+from http.client import HTTPResponse
 import re
 from unittest import result
 from urllib import request
@@ -5,10 +6,24 @@ from django.shortcuts import render
 import pandas as pd
 import pickle, os, random
 
+from django.http import HttpResponse
 #sd,median,Q25,Q75,IQR,skew,sp.ent,mode,centroid,meanfun,minfun,maxfun,mindom,maxdom,label
 
 def Voice(request):
-    result = None
+    results = 'None'
+    if request.POST.get('voice_button'):
+
+        results = request.POST['name']
+    else:
+        print('Not Working')
+
+    print(results)
+    return render(request, 'mainpage.html', {'result': results})
+
+
+'''    else:
+        print('Not Working')'''
+'''   results = None
     if request.POST.get('voice_button'):
         name = request.POST['Person Name']
         sd = request.POST['sd']
@@ -28,12 +43,8 @@ def Voice(request):
         #modindx = request.POST['modindx']
 
         results = Finder(name, sd, median, Q25, Q75, IQR, Skew, spent, Mode, Centroid, meanfun, minfun, maxfun, mindom, maxdom)
-        results = results[0]
-        print(results)
+        results = results[0]'''
 
-    else:
-        print('Not Working')
-    return render(request, 'mainpage.html', {'result': results})
 
 
 def Finder(name, sd, median, Q25, Q75, IQR, Skew, spent, Mode, Centroid, meanfun, minfun, maxfun, mindom, maxdom):
@@ -57,5 +68,6 @@ def Finder(name, sd, median, Q25, Q75, IQR, Skew, spent, Mode, Centroid, meanfun
         return None
 
 
-
+def index(request):
+    return HttpResponse('Afif Nahas!')
 
